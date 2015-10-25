@@ -1,0 +1,38 @@
+<div layout="vertical" layout-fill>
+
+    <md-content>
+        <header>
+            <acme-navbar></acme-navbar>
+        </header>
+
+        <section class="jumbotron">
+            <h1>Northwind Employees</h1>
+            <p>
+                An app for accessing the Northwind ODATA example data.
+            </p>
+            <md-button class="md-raised animated infinite" ng-href="https://github.com/bittermelon/northwindemployees"
+                       target="_blank">
+                Source available on Github
+            </md-button>
+        </section>
+        <md-card>
+            <md-card-content>
+                <h3 class="md-title">This is my example app for accessing the ODATA resource for Northwind at
+                    odata.org</h3>
+                <h4 class="md-subhead tools">Tools used:</h4>
+                <md-list>
+                    <md-list-item class="md-2-line" ng-repeat="(tool, comment) in main.tools">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{ tool }}</h3>
+                            <p>{{ comment }}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+
+                <h4 class="md-subhead">Hope you like it!</h4>
+                /Eric Karlsson
+            </md-card-content>
+        </md-card>
+    </md-content>
+
+</div>
