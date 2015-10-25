@@ -1,97 +1,80 @@
-<div layout="vertical" layout-fill>
+<div class="container">
 
-    <md-content>
-        <header>
-            <acme-navbar></acme-navbar>
-        </header>
-        <div class="loader spaced" layout="row" layout-sm="column" layout-align="space-around"
-             ng-hide="employeeCtrl.employee.$resolved">
-            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    <header>
+        <acme-navbar></acme-navbar>
+    </header>
+    <div class="loader spaced" ng-hide="employeeCtrl.employee.$resolved">
+        Loading...
+    </div>
+    <div class="employee" layout-align="left" layout="row">
+        <div class="employee col-xs-12">
+            <img class="pull-right" ng-src="{{ employeeCtrl.employee.Photo | cleanImage }}"
+                 alt="{{ employeeCtrl.employee.TitleOfCourtesy }} {{ employeeCtrl.employee.FirstName }} {{ employeeCtrl.employee.LastName }}">
+
+            <h3>
+                {{ employeeCtrl.employee.TitleOfCourtesy }} {{ employeeCtrl.employee.FirstName }} {{
+                employeeCtrl.employee.LastName }}
+                <small>age {{ - (employeeCtrl.employee.BirthDate | amDifference : null : 'years') }}</small>
+            </h3>
+
+            <p>{{ employeeCtrl.employee.Title }}, {{ employeeCtrl.employee.City }}</p>
+
+            <h4>Address
+
+                <small>
+                    <br/>
+                    {{employeeCtrl.employee.Address}}<br/>
+                    {{employeeCtrl.employee.PostalCode}}
+                    {{employeeCtrl.employee.City}}<span ng-if="employeeCtrl.employee.Region">, {{employeeCtrl.employee.Region}}</span>
+                    <br/>
+                    {{employeeCtrl.employee.Country}}
+                </small>
+            </h4>
+            <h4 ng-repeat="attr in employeeCtrl.attributes"
+                ng-if="employeeCtrl.employee[attr]">{{ attr | unCamel }}
+
+                <small ng-switch="attr">
+                        <span ng-switch-when="ReportsTo">
+                            <a ng-href="#/employees/{{ employeeCtrl.reportsTo.EmployeeID }}">
+                                {{ employeeCtrl.reportsTo.FirstName }}
+                                {{ employeeCtrl.reportsTo.LastName }}
+                            </a>
+                        </span>
+                        <span ng-switch-when="HireDate">
+                            {{ employeeCtrl.employee.HireDate | amDateFormat:'Do MMMM, YYYY' }}
+                        </span>
+                        <span ng-switch-default>
+                            {{ employeeCtrl.employee[attr] }}
+                        </span>
+                </small>
+            </h4>
         </div>
-        <div class="employee" layout-align="left" layout="row">
-            <md-card>
-                <md-card-content>
-                    <img class="pull-right" ng-src="{{ employeeCtrl.employee.Photo | cleanImage }}"
-                         alt="{{ employeeCtrl.employee.TitleOfCourtesy }} {{ employeeCtrl.employee.FirstName }} {{ employeeCtrl.employee.LastName }}">
+    </div>
 
-                    <h3 class="md-title">
-                        {{ employeeCtrl.employee.TitleOfCourtesy }} {{ employeeCtrl.employee.FirstName }} {{
-                        employeeCtrl.employee.LastName }},
-                        age {{ - (employeeCtrl.employee.BirthDate | amDifference : null : 'years') }}
-                    </h3>
+    <!-- ORDERS -->
+    <div layout-align="left" layout="row">
+        <div class="col-xs-12">
+            <div class="loader" ng-hide="employeeCtrl.orders.$resolved">
+                Loading orders...
+            </div>
 
-                    <p>{{ employeeCtrl.employee.Title }}, {{ employeeCtrl.employee.City }}</p>
-                    <md-list>
-                        <md-list-item class="md-2-line">
-                            <div class="md-list-item-text" layout="column">
-                                <h3>Address</h3>
+            <div ng-if="employeeCtrl.orders.$resolved">
+                <h3>Orders</h3>
 
-                                <p>
-                                    {{employeeCtrl.employee.Address}}<br/>
-                                    {{employeeCtrl.employee.PostalCode}}
-                                    {{employeeCtrl.employee.City}}<span ng-if="employeeCtrl.employee.Region">, {{employeeCtrl.employee.Region}}</span>
-                                    <br/>
-                                    {{employeeCtrl.employee.Country}}
-                                </p>
-                            </div>
-                        </md-list-item>
-                        <md-list-item class="md-2-line" ng-repeat="attr in employeeCtrl.attributes"
-                                      ng-if="employeeCtrl.employee[attr]">
-                            <div class="md-list-item-text" layout="column">
-                                <h3>{{ attr | unCamel }}</h3>
-
-                                <p ng-switch="attr">
-                                    <span ng-switch-when="ReportsTo">
-                                        <a ng-href="#/employees/{{ employeeCtrl.reportsTo.EmployeeID }}">
-                                            {{ employeeCtrl.reportsTo.FirstName }}
-                                            {{ employeeCtrl.reportsTo.LastName }}
-                                        </a>
-                                    </span>
-                                    <span ng-switch-when="HireDate">
-                                        {{ employeeCtrl.employee.HireDate | amDateFormat:'Do MMMM, YYYY' }}
-                                    </span>
-                                    <span ng-switch-default>
-                                        {{ employeeCtrl.employee[attr] }}
-                                    </span>
-                                </p>
-                            </div>
-                        </md-list-item>
-                    </md-list>
-                </md-card-content>
-            </md-card>
-        </div>
-        <md-divider></md-divider>
-
-        <!-- ORDERS -->
-        <div layout-align="left" layout="row">
-            <md-card>
-                <md-card-content>
-                    <div class="loader" layout="row" layout-sm="column" layout-align="space-around"
-                         ng-hide="employeeCtrl.orders.$resolved">
-                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-                    </div>
-
-                    <div ng-if="employeeCtrl.orders.$resolved">
-                        <md-data-table-toolbar>
-                            <h2 class="md-title">Orders</h2>
-                        </md-data-table-toolbar>
-
-                        <md-data-table-container>
-                            <table md-data-table md-disable-select="true" md-progress="deferred">
-                                <thead md-order="employeeCtrl.ordering" md-trigger="onOrderChange">
-                                <tr>
-                                    <th ng-repeat="(key, dummy) in employeeCtrl.orders.value[0]" order-by="{{key}}"
-                                        name="{{key | unCamel}}"
-                                        ng-if="key != 'EmployeeID' && !key.match(employeeCtrl.avoidShip)"></th>
-                                    <th name="Shipping Address"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr md-auto-select
-                                    ng-repeat="order in employeeCtrl.orders.value | orderBy: employeeCtrl.ordering">
-                                    <td ng-repeat="(key, value) in order"
-                                        ng-if="key != 'EmployeeID' && !key.match(employeeCtrl.avoidShip)">
-                                        <p ng-switch="key">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="(key, dummy) in employeeCtrl.orders.value[0]" order-by="{{key}}"
+                            ng-if="key != 'EmployeeID' && !key.match(employeeCtrl.avoidShip)">{{key | unCamel}}
+                        </th>
+                        <th>Shipping Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="order in employeeCtrl.orders.value | orderBy: employeeCtrl.ordering">
+                        <td ng-repeat="(key, value) in order"
+                            ng-if="key != 'EmployeeID' && !key.match(employeeCtrl.avoidShip)">
+                            <p ng-switch="key">
                                         <span ng-switch-when="OrderDate">
                                             {{ value | amDateFormat:'YYYY-MM-DD' }}
                                         </span>
@@ -104,44 +87,20 @@
                                         <span ng-switch-default>
                                             {{ value }}
                                         </span>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        {{order.ShipName}}<br/>
-                                        {{order.ShipAddress}}<br/>
-                                        {{order.ShipPostalCode}}
-                                        {{order.ShipCity}}<span ng-if="order.ShipRegion">, {{order.ShipRegion}}</span>
-                                        <br/>
-                                        {{order.ShipCountry}}
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </md-data-table-container>
-                    </div>
-                </md-card-content>
-            </md-card>
-
+                            </p>
+                        </td>
+                        <td>
+                            {{order.ShipName}}<br/>
+                            {{order.ShipAddress}}<br/>
+                            {{order.ShipPostalCode}}
+                            {{order.ShipCity}}<span ng-if="order.ShipRegion">, {{order.ShipRegion}}</span>
+                            <br/>
+                            {{order.ShipCountry}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </md-content>
-
+    </div>
 </div>
-
-<!--
-"LastName": "Davolio",
-"FirstName": "Nancy",
-"Title": "Sales Representative",
-"TitleOfCourtesy": "Ms.",
-"BirthDate": "1948-12-08T00:00:00Z",
-"HireDate": "1992-05-01T00:00:00Z",
-"Address": "507 - 20th Ave. E.\r\nApt. 2A",
-"City": "Seattle",
-"Region": "WA",
-"PostalCode": "98122",
-"Country": "USA",
-"HomePhone": "(206) 555-9857",
-"Extension": "5467",
-
-"Notes": "Education includes a BA in psychology from Colorado State University in 1970.  She also completed \"The Art of the Cold Call.\"  Nancy is a member of Toastmasters International.",
-"ReportsTo": 2,
--->

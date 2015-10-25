@@ -5,46 +5,12 @@
 // bower:scss
 // endbower
 
+$navbar-inverse-link-color: #5AADBB;
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:300,700,700italic,300italic);
 
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
-html {
+html, body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
@@ -59,11 +25,6 @@ a {
   }
 }
 
-
-[layout=row] {
-  flex-direction: row;
-}
-
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -71,64 +32,32 @@ a {
   padding: 0.2em 0;
 }
 
-md-toolbar.md-default-theme {
-  background-color: black;
-}
+.employees {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  height: 116px;
 
-section.jumbotron {
-  margin-bottom: 30px;
-  padding: 1px 30px;
-  background-color: #5aadbb;
-  text-align: center;
-
-  color: white;
-
-  h1 {
-    font-size: 3em;
-  }
-}
-
-md-content {
-  width: 100vw;
-}
-
-.techs {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100vw;
-
-  md-card {
-    width: 30%;
-
-    img.pull-right {
-      float: right;
-      width: 100px;
-    }
+  img.pull-right {
+    float: right;
+    width: 100px;
   }
 }
 
 .employee {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100vw;
-  max-width: 600px;
-
-  md-card {
-    width: 90%;
-
-    img.pull-right {
-      float: right;
-      width: 200px;
-    }
-
-    md-list-item {
-      padding-left: 0;
-    }
+  img.pull-right {
+    float: right;
+    width: 200px;
   }
-}
 
-.spaced.loader {
-  margin-top: 30vh;
+}
+.loader {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 1.5em;
+  &.spaced {
+    margin-top: 30vh;
+    font-size: 3em;
+  }
 }
 
 .tools {

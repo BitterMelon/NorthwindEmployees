@@ -3,18 +3,16 @@
 * [Yeoman] - Using the "gulp-angular" generator
 * [AngularJS] - Plays well with REST
 * [SASS] - Because SCSS >> CSS
-* [Angular Material] - Always wanted to try it
+* [Bootstrap] - It\'s really handy
 * [Bower] - Makes dependency hell, a little less hellish
 * [Moment.js] - Never format dates without it
-* [Material Design Data Table] - For the orders table
 
 [Yeoman]: <http://yeoman.io/>
 [AngularJS]: <http://angularjs.org/>
 [SASS]: <http://sass-lang.com/>
-[Angular Material]: <https://material.angularjs.org/>
+[Bootstrap]: <http://getbootstrap.com/>
 [Bower]: <http://bower.io/>
 [Moment.js]: <http://momentjs.com/>
-[Material Design Data Table]: <https://github.com/daniel-nagy/md-data-table>
 
 ### Installation
 

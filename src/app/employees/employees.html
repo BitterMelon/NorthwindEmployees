@@ -1,29 +1,23 @@
-<div layout="vertical" layout-fill>
+<div class="container">
 
-    <md-content>
-        <header>
-            <acme-navbar></acme-navbar>
-        </header>
+    <header>
+        <acme-navbar></acme-navbar>
+    </header>
 
-        <div class="loader spaced" layout="row" layout-sm="column" layout-align="space-around" ng-hide="employeesCtrl.employees.$resolved">
-            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-        </div>
-        <div class="techs" layout-align="center">
-            <md-card ng-repeat="employee in employeesCtrl.employees.value">
-                <md-card-content>
-                    <img class="pull-right" ng-src="{{ employee.Photo | cleanImage }}"
-                         alt="{{ employee.TitleOfCourtesy }} {{ employee.FirstName }} {{ employee.LastName }}">
+    <div class="loader spaced" ng-hide="employeesCtrl.employees.$resolved">
+        Loading...
+    </div>
+    <div class="employees col-xs-12 col-sm-6 col-md-4" ng-repeat="employee in employeesCtrl.employees.value">
+        <img class="pull-right" ng-src="{{ employee.Photo | cleanImage }}"
+             alt="{{ employee.TitleOfCourtesy }} {{ employee.FirstName }} {{ employee.LastName }}">
 
-                    <h3 class="md-title">
-                        <a ng-href="#/employees/{{ employee.EmployeeID }}">
-                            {{ employee.TitleOfCourtesy }} {{ employee.FirstName }} {{ employee.LastName }}
-                        </a>
-                    </h3>
+        <h4>
+            <a ng-href="#/employees/{{ employee.EmployeeID }}">
+                {{ employee.TitleOfCourtesy }} {{ employee.FirstName }} {{ employee.LastName }}
+            </a>
+        </h4>
 
-                    <p>{{ employee.Title }}, {{ employee.City }}</p>
-                </md-card-content>
-            </md-card>
-        </div>
-    </md-content>
+        <p>{{ employee.Title }}, {{ employee.City }}</p>
+    </div>
 
 </div>

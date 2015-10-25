@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('ifsEmployees', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ngMaterial', 'angularMoment', 'md.data.table']);
+    .module('ifsEmployees', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'angularMoment', 'ui.bootstrap']);
 
 })();

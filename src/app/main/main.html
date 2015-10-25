@@ -1,38 +1,39 @@
-<div layout="vertical" layout-fill>
+<div class="container">
 
-    <md-content>
-        <header>
-            <acme-navbar></acme-navbar>
-        </header>
+    <div>
+        <acme-navbar></acme-navbar>
+    </div>
 
-        <section class="jumbotron">
-            <h1>Northwind Employees</h1>
-            <p>
-                An app for accessing the Northwind ODATA example data.
-            </p>
-            <md-button class="md-raised animated infinite" ng-href="https://github.com/bittermelon/northwindemployees"
-                       target="_blank">
-                Source available on Github
-            </md-button>
-        </section>
-        <md-card>
-            <md-card-content>
-                <h3 class="md-title">This is my example app for accessing the ODATA resource for Northwind at
-                    odata.org</h3>
-                <h4 class="md-subhead tools">Tools used:</h4>
-                <md-list>
-                    <md-list-item class="md-2-line" ng-repeat="(tool, comment) in main.tools">
-                        <div class="md-list-item-text" layout="column">
-                            <h3>{{ tool }}</h3>
-                            <p>{{ comment }}</p>
-                        </div>
-                    </md-list-item>
-                </md-list>
+    <div class="jumbotron text-center">
+        <h1>Northwind Employees</h1>
 
-                <h4 class="md-subhead">Hope you like it!</h4>
-                /Eric Karlsson
-            </md-card-content>
-        </md-card>
-    </md-content>
+        <p>
+            An app for accessing the Northwind ODATA example data.
+        </p>
+        <a type="button" class="btn btn-lg btn-success" ng-href="https://github.com/bittermelon/northwindemployees"
+           target="_blank">
+            Source available on Github
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>This is my example app for accessing the ODATA resource for Northwind at
+                odata.org</h3>
+            <h4>Tools used</h4>
+            <ul>
+                <li ng-repeat="(tool, comment) in main.tools">
+                    <h5>{{ tool }}
+                    <small>
+                        {{ comment }}
+                    </small>
+                        </h5>
+                </li>
+            </ul>
+
+            <h4>Hope you like it!</h4>
+            /Eric Karlsson
+        </div>
+    </div>
 
 </div>

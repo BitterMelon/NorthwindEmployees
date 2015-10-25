@@ -13,10 +13,9 @@
             'Yeoman': 'Using the "gulp-angular" generator',
             'AngularJS': 'Plays well with REST',
             'SASS': 'Because SCSS >> CSS',
-            'Angular Material': 'Always wanted to try it',
+            'Bootstrap': 'It\'s really handy',
             'Bower': 'Makes dependency hell, a little less hellish',
             'Moment.js': 'Never format dates without it',
-            'Material Design Data Table': 'For the orders table'
         };
     }
 })();
