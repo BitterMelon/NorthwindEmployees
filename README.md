@@ -3,7 +3,7 @@
 * [Yeoman] - Using the "gulp-angular" generator
 * [AngularJS] - Plays well with REST
 * [SASS] - Because SCSS >> CSS
-* [Bootstrap] - It\'s really handy
+* [Bootstrap] - It's really handy
 * [Bower] - Makes dependency hell, a little less hellish
 * [Moment.js] - Never format dates without it
 
