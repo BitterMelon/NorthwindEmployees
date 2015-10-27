@@ -15,7 +15,7 @@
             'SASS': 'Because SCSS >> CSS',
             'Bootstrap': 'It\'s really handy',
             'Bower': 'Makes dependency hell, a little less hellish',
-            'Moment.js': 'Never format dates without it',
+            'Moment.js': 'Never format dates without it'
         };
     }
 })();

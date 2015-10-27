@@ -6,7 +6,7 @@
     <div class="loader spaced" ng-hide="employeeCtrl.employee.$resolved">
         Loading...
     </div>
-    <div class="employee" layout-align="left" layout="row">
+    <div class="employee" ng-show="employeeCtrl.employee.$resolved">
         <div class="employee col-xs-12">
             <img class="pull-right" ng-src="{{ employeeCtrl.employee.Photo | cleanImage }}"
                  alt="{{ employeeCtrl.employee.TitleOfCourtesy }} {{ employeeCtrl.employee.FirstName }} {{ employeeCtrl.employee.LastName }}">
@@ -52,7 +52,7 @@
     </div>
 
     <!-- ORDERS -->
-    <div layout-align="left" layout="row">
+    <div layout-align="left" layout="row" ng-if="employeeCtrl.employee.$resolved">
         <div class="col-xs-12">
             <div class="loader" ng-hide="employeeCtrl.orders.$resolved">
                 Loading orders...
